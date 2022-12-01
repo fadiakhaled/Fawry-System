@@ -1,5 +1,5 @@
 import java.util.Vector;
-public class TransactionController {
+public class  TransactionController {
     Payment payment;
     Services service;
     Customer customer;
@@ -20,7 +20,7 @@ public class TransactionController {
     }
     public void create_transaction()
     {
-        pay_amount=service.get_discount()*pay_amount;
+        pay_amount=service.getDiscount()*pay_amount;
         if(payment.pay(pay_amount)>-2) {
             transactions.add(trans);
             System.out.println("Transaction completed successfully and amount "+pay_amount+" was paid.");
