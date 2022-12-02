@@ -33,6 +33,18 @@ public class Transaction {
         return refund;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public double getPay_amount() {
+        return pay_amount;
+    }
+
+    public Services getService() {
+        return service;
+    }
+
     public int getTrans_ID() {
         return trans_ID;
     }
