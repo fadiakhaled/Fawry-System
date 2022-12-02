@@ -1,34 +1,43 @@
 public class Transaction {
-    Services service;
-    Customer customer;
-    double  pay_amount;
-    boolean refund=false;
-    int trans_ID;
+    private Services service;
+    private Customer customer;
+    private double  pay_amount;
+    private boolean refund=false;
+    private int trans_ID;
     public Transaction (Services s, Customer c,  double a,int id)
     {
-        this.service=s;
-        this.customer=c;
-        this.pay_amount=a;
-        this.trans_ID=id;
+        this.setService(s);
+        this.setCustomer(c);
+        this.setPay_amount(a);
+        this.setTrans_ID(id);
     }
     public void setRefund(boolean r)
     {
+
         this.refund=r;
     }
-    public Services getService()
-    {
-        return this.service;
+
+    public void setService(Services service) {
+        this.service = service;
     }
-    public Customer getCustomer()
-    {
-        return this.customer;
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
-    public double getPay_amount()
-    {
-        return this.pay_amount;
+
+    public void setPay_amount(double pay_amount) {
+        this.pay_amount = pay_amount;
     }
-    public boolean getRefund()
-    {
-        return this.refund;
+
+    public boolean isRefund() {
+        return refund;
+    }
+
+    public int getTrans_ID() {
+        return trans_ID;
+    }
+
+    public void setTrans_ID(int trans_ID) {
+        this.trans_ID = trans_ID;
     }
 }
