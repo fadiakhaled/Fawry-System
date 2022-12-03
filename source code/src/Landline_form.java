@@ -1,50 +1,35 @@
 import java.util.Scanner;
 
-public class Landline_form implements Forms{
-    private double pay_amount;
-    private int mobile_num;
-    private int landline_num;
+public class Landline_form extends Forms{
+
+    private String landline_num;
     private String receipt;
-    public double create_form()
+
+    public void extra_info()
     {
-        System.out.println("Please Enter your mobile number:");
         Scanner sc = new Scanner(System.in);
-        setMobile_num(sc.nextInt());
+
         System.out.println("Please Enter your landline number:");
-        setLandline_num(sc.nextInt());
+        setLandline_num(sc.nextLine());
         System.out.println("Please Enter your landline receipt plan Monthly or Quarter:");
         setReceipt(sc.nextLine().toLowerCase());
-        while(getReceipt() !="monthly" && getReceipt() !="quarter")
-            {
-                    System.out.println("Please enter a valid receipt plan:");
-                    setReceipt(sc.nextLine().toLowerCase());
-            }
-        System.out.println("Please Enter the amount you would like to pay for the service:");
-        setPay_amount(sc.nextDouble());
-        return getPay_amount();
+        while(!this.getReceipt().equals("monthly") && !this.getReceipt().equals("quarter"))
+        {
+            System.out.println("Please enter a valid receipt plan:");
+            setReceipt(sc.nextLine().toLowerCase());
+        }
+        info.add(getLandline_num());
+        info.add(getReceipt());
+
     }
 
-    public double getPay_amount() {
-        return pay_amount;
-    }
 
-    public void setPay_amount(double pay_amount) {
-        this.pay_amount = pay_amount;
-    }
 
-    public int getMobile_num() {
-        return mobile_num;
-    }
-
-    public void setMobile_num(int mobile_num) {
-        this.mobile_num = mobile_num;
-    }
-
-    public int getLandline_num() {
+    public String getLandline_num() {
         return landline_num;
     }
 
-    public void setLandline_num(int landline_num) {
+    public void setLandline_num(String landline_num) {
         this.landline_num = landline_num;
     }
 
