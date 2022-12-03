@@ -1,22 +1,25 @@
 public class AuthenticationController  {
 
+    AuthenticationController(){
+        AuthenticationEntity c=new AuthenticationEntity();
+    }
 
-    AuthenticationEntity athen=new AuthenticationEntity();
 
-    boolean SignInUser(String Email,String Password)
+
+    boolean  SignInUser(String Email,String Password)
     {
-         return athen.CheckAccountForUser(Email, Password);
+         return AuthenticationEntity.CheckAccountForUser(Email, Password);
 
     }
     boolean SignInAdmin(String Email,String Password)
     {
-       return athen.CheckAccountForAdmin(Email, Password);
+       return AuthenticationEntity.CheckAccountForAdmin(Email, Password);
 
     }
     String SignUpUser(String Username,String Email,String password)
     {
 
-        return athen.CreateAccount(Username, Email,password);
+        return AuthenticationEntity.CreateAccount(Username, Email,password);
 
    }
 

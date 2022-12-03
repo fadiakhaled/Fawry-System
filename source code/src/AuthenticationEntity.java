@@ -2,9 +2,11 @@
 import java.util.HashMap;
 
 public class AuthenticationEntity  {
+
     private static  HashMap<String, Customer> user = new HashMap<>();
     private static HashMap<String, Admin> admin = new HashMap<>();
     private static HashMap<String, Customer> username = new HashMap<>();
+
 
 
     public AuthenticationEntity() {
@@ -18,7 +20,7 @@ public class AuthenticationEntity  {
 
     }
 
-    boolean CheckAccountForUser(String Email, String Password)
+     static public boolean CheckAccountForUser(String Email, String Password)
     {
         if (user.containsKey(Email))
         {
@@ -37,12 +39,13 @@ public class AuthenticationEntity  {
             return false;
         }
     }
-    boolean CheckAccountForAdmin(String Email, String Password )
+    static boolean CheckAccountForAdmin(String Email, String Password )
     {
          if(admin.containsKey(Email))
          {
             if (Password.equals(admin.get(Email).getPassword()))
             {
+
                 Info(admin.get(Email).getAdminName(), Email, Password);
                 return true;
             }
@@ -58,7 +61,7 @@ public class AuthenticationEntity  {
         }
     }
 
-     String CreateAccount(String UserName, String Email,String Password)
+     static String CreateAccount(String UserName, String Email,String Password)
     {
 
         if(user.containsKey(Email))
@@ -79,11 +82,11 @@ public class AuthenticationEntity  {
 
         }
     }
-    Customer details(String username,String email,String password)
+    static Customer details(String username,String email,String password)
     {
         return new Customer(username,email,password);
     }
-    Admin Info(String username,String email,String password)
+    static Admin Info(String username,String email,String password)
     {
         return new Admin(username,email,password);
     }

@@ -1,8 +1,8 @@
 public class SignInBoundry {
-    AuthenticationController s=new AuthenticationController();
     private String Email;
     private String Password;
     private String user;
+    AuthenticationController controller=new AuthenticationController();
     SignInBoundry(){}
     SignInBoundry(String userName,String email,String password)
     {
@@ -44,15 +44,15 @@ public class SignInBoundry {
 
     boolean SignInAdmin()
     {
-        return s.SignInAdmin(Email,Password);
+        return controller.SignInAdmin(Email,Password);
     }
     boolean SignInUSer()
     {
-       return s.SignInUser(Email,Password);
+       return controller.SignInUser(Email,Password);
     }
-   String SignUp()
+    String SignUp()
     {
-        return s.SignUpUser(user,Email,Password);
+        return controller.SignUpUser(user,Email,Password);
     }
 
 

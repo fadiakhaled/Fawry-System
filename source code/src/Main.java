@@ -4,8 +4,10 @@ public class Main{
 
     public static void main(String arg[]) {
         Scanner sc=new Scanner(System.in);
+
         Customer_Menu m=new Customer_Menu();
         Admin_Menu adminMenu = new Admin_Menu();
+
 
         //AuthenticationEntity entity=new AuthenticationEntity();
         String Email;
