@@ -1,29 +1,24 @@
 import java.util.HashMap;
 
 public class Admin_Menu {
+    private final Discount_Controller discountController = new Discount_Controller();
+    private final RefundController refundC = new RefundController();
 
     public void createOverallDiscount(double discAmount) {
-        Discount oDiscount = new Overall_Discount();
-        oDiscount.setDiscount(discAmount);
+        discountController.createOverallDiscount(discAmount);
     }
 
     public void createSpecificDiscount (double discAmount, String servName) {
-        Specific_Discount sDiscount = new Specific_Discount();
-        sDiscount.setService(servName);
-        sDiscount.setDiscount(discAmount);
+        discountController.createSpecificDiscount(discAmount, servName);
     }
 
     public void removeAllDiscount(){
-        Overall_Discount remALlDiscount = new Overall_Discount();
-        remALlDiscount.setDiscount(0);
+        discountController.removeAllDiscount();
     }
     public void removeSpecificDiscount(String name){
-        Specific_Discount remSpecDiscount = new Specific_Discount();
-        remSpecDiscount.setService(name);
-        remSpecDiscount.setDiscount(0);
+        discountController.removeSpecificDiscount(name);
     }
     public void getRefunds() {
-        RefundController refundC = new RefundController();
         HashMap<Integer,Transaction> refunds = refundC.getRefunds();
         for (Integer key: refunds.keySet()){
             System.out.print(key+" ");
@@ -33,11 +28,9 @@ public class Admin_Menu {
         }
     }
     public void acceptRefund(int id) {
-        RefundController refundC = new RefundController();
         refundC.acceptRequest(id);
     }
     public void refuseRefund(int id) {
-        RefundController refundC = new RefundController();
         refundC.refuseRequest(id);
     }
 

@@ -20,4 +20,10 @@ public class Specific_Discount extends Discount {
         if (services.size() > 0)
             services.get(0).updateDiscount(amount);
     }
+
+    @Override
+    public void removeDiscount() {
+        if (services.size() > 0)
+            services.get(0).updateDiscount(-services.get(0).getDiscount());
+    }
 }

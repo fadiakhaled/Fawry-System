@@ -13,4 +13,13 @@ public class Overall_Discount extends Discount {
             services.get(i).updateDiscount(amount);
         }
     }
+
+    @Override
+    public void removeDiscount() {
+        for (int i = 0; i < 4; i++){
+            services.get(i).updateDiscount(-services.get(i).getDiscount());
+        }
+    }
+
+
 }

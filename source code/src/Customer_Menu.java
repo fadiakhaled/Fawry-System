@@ -1,11 +1,8 @@
 import java.util.ArrayList;
-
 public class Customer_Menu {
     String name;
-    Services internetPayment = new Internet_service();
-    Services mobileRecharge = new Mobile_recharge();
-    Services donations = new Donations();
-    Services landline = new Landline();
+    private final Discount_Controller discountController = new Discount_Controller();
+
 
     ArrayList<String> arraylist_1 = new ArrayList<String>();
 
@@ -45,10 +42,7 @@ public class Customer_Menu {
         return name;
     }
     void checkDiscounts() {
-        System.out.println("Discount Applied on Internet Payment Services: " + internetPayment.getDiscount() * 100 + "%" );
-        System.out.println("Discount Applied on Mobile Recharge Services: " + mobileRecharge.getDiscount()*100 + "%");
-        System.out.println("Discount Applied on Donations Services: " + donations.getDiscount()*100 + "%");
-        System.out.println("Discount Applied on Landline Services: " + landline.getDiscount()*100 + "%");
+        discountController.returnDiscounts();
     }
 
 }

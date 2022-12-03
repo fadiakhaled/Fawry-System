@@ -6,4 +6,5 @@ public abstract class Discount {
         services.add(service);
     }
     public abstract void setDiscount(double amount);
+    public abstract void removeDiscount();
 }
