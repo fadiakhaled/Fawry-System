@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Customer_Menu {
     CustomerController customerController = new CustomerController();
-
+    public RefundController refundC = new RefundController();
     Discount_Controller dis = new Discount_Controller();
     Scanner sc = new Scanner(System.in);
     public static String Email;
@@ -13,6 +13,7 @@ public class Customer_Menu {
     private String creditcard;
     static Customer currentCustomer = new Customer("habibayasser",  "habibayasser@gmail.com",  "123");
     private double amount;
+    private Payment payment;
 
     private final Discount_Controller discountController = new Discount_Controller();
 
@@ -64,7 +65,8 @@ public class Customer_Menu {
         System.out.println("3: Add to wallet");
         System.out.println("4: Ask for refund");
         System.out.println("5: Check wallet");
-        System.out.println("6: Sign Out");
+        System.out.println("6: Pay for a service");
+        System.out.println("7: Sign Out");
         int choice = sc.nextInt();
 
         switch (choice) {
@@ -84,16 +86,84 @@ public class Customer_Menu {
                 System.out.println("Your wallet now contains " + customerController.AddToWallet(currentCustomer, creditcard, amount));
             }
             case 4 -> {
-                ////
+                System.out.println("Please Enter Transaction id");
+                int id = sc.nextInt();
+                requestRefund(id);
             }
             case 5 -> {
                 System.out.println("You have" + currentCustomer.getWallet() + " L.E. in your wallet");
             }
             case 6 -> {
+                System.out.println("Please choose a payment method:");
+                System.out.println("1: Pay by cash");
+                System.out.println("2: Pay by credit card");
+                System.out.println("3: Pay by wallet");
+                int ans = sc.nextInt();
+
+                switch (ans) {
+                    case 1 -> {
+                        payment = new CashPayment();
+                    }
+                    case 2 -> {
+                        System.out.print("Please enter your credit card number:");
+                        String creditcard= sc.next();
+                        payment = new CreditCardPayment(creditcard);
+                    }
+                    case 3 -> {
+                        System.out.println("the wallet contains "+ currentCustomer.getWallet());
+                        payment = new WalletPayment(currentCustomer.getWallet());
+                    }
+                }
+
+                System.out.println("1: Internet Payment services");
+                System.out.println("2: Mobile recharge services");
+                System.out.println("3: Donations services");
+                System.out.println("4: Landline services");
+                System.out.println("5: cancel");
+                int option = sc.nextInt();
+                switch (option) {
+                    case 1 -> {
+                        InternetService_Provider ISP =  InternetService_Provider.getInstance();
+
+                        ISP.create_transaction(currentCustomer, payment);
+                    }
+                    case 2 -> {
+                        MobileService_provider MSP = MobileService_provider.getInstance();
+                        MSP.printService_providers();
+                        int sp= sc.nextInt();
+                        MSP.create_transaction(currentCustomer, payment);
+                    }
+                    case 3 -> {
+                        DonationService_provider DSP =  DonationService_provider.getInstance();
+                        DSP.create_transaction(currentCustomer, payment);
+                    }
+                    case 4 -> {
+                        LandlineService_provider LSP =  LandlineService_provider.getInstance();
+                        LSP.create_transaction(currentCustomer, payment);
+                    }
+
+                }
+
+
+            }
+            case 7 -> {
                 break;
             }
         }
 
 
     }
+    public void requestRefund(int id)
+    {
+        if(refundC.requestRefund(id) && currentCustomer.getCustomerName()==refundC.getTransactionByID(id).getCustomer().getCustomerName())
+            System.out.println("Refund request done successfully");
+        else
+            System.out.println("Wrong Transaction ID");
+    }
 }
+
+
+
+
+
+
