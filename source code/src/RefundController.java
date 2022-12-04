@@ -1,31 +1,52 @@
 import java.util.HashMap;
 
 public class RefundController {
-    private static HashMap<Integer,Transaction> refunds = new HashMap<Integer,Transaction>();
-    public void AddRefund(Transaction t)
-    {
-        refunds.put(t.getTrans_ID(),t);
-    }
+    private TransactionsEntity Transactions = new TransactionsEntity();
+
     public HashMap<Integer,Transaction> getRefunds()
     {
-        return refunds;
+        return Transactions.getRefunds();
     }
-    public void acceptRequest(int id)
-    {
-        if(refunds.containsKey(id))
-        {
-            double amount = refunds.get(id).getPay_amount();
-            refunds.get(id).getCustomer().setWallet(refunds.get(id).getCustomer().getWallet()+amount);
-            refunds.get(id).setRefund(false);
-            refunds.remove(id);
+    public boolean requestRefund(int id) {
+        Transaction toBeRefunded = getTransactionByID(id);
+        if(toBeRefunded!=null) {
+            toBeRefunded.setRefund(true);
+            Transactions.requestRefund(toBeRefunded);
+            return true;
         }
+        else
+            return false;
     }
-    public void refuseRequest(int id)
+    public Transaction getTransactionByID(int id)
     {
-        if(refunds.containsKey(id))
-        {
-            refunds.get(id).setRefund(false);
-            refunds.remove(id);
+        return Transactions.findTransaction(id);
+    }
+
+    public boolean acceptRequest(int id) {
+        Transaction acceptedRefund = Transactions.findRefund(id);
+        if (acceptedRefund != null) {
+            double amount = acceptedRefund.getPay_amount();
+            acceptedRefund.getCustomer().setWallet(acceptedRefund.getCustomer().getWallet() + amount);
+            acceptedRefund.setRefund(false);
+            Transactions.removeRefundRequest(id);
+            return true;
         }
+        return false;
+    }
+
+    public boolean refuseRequest(int id) {
+        Transaction refusedRefund = Transactions.findRefund(id);
+        if(refusedRefund != null){
+            refusedRefund.setRefund(false);
+            Transactions.removeRefundRequest(id);
+            return true;
+        }
+        return false;
+
+    }
+    public Transaction searchRefunds(int id)
+    {
+        Transaction found = Transactions.findRefund(id);
+        return found;
     }
 }

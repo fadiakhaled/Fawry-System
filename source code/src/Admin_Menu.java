@@ -76,6 +76,28 @@ public class Admin_Menu {
                             }
                         }
                     }
+                    case 4 -> {
+                        getRefunds();
+                        System.out.println("[1]Search by Transaction ID\n[2]Exit");
+                        int ch2 = sc.nextInt();
+                        switch (ch2) {
+                            case 1 ->{
+                                System.out.print("Enter Transaction ID: ");
+                                int id = sc.nextInt();
+                                System.out.println("[1]Accept Refund\n[2]Refuse Refund");
+                                int acceptance = sc.nextInt();
+                                switch (acceptance) {
+                                    case 1 -> {
+                                        acceptRefund(id);
+                                    }
+                                    case 2 -> {
+                                        refuseRefund(id);
+                                    }
+                                }
+
+                            }
+                        }
+                    }
                 }
                 //m.checkDiscounts();
                 System.out.println("[1]Continue\n[2] Exit Program");
@@ -85,5 +107,28 @@ public class Admin_Menu {
             }
         }
 
+    }
+    public void getRefunds() {
+        HashMap<Integer,Transaction> refunds = refundC.getRefunds();
+        for (Integer key: refunds.keySet()){
+            System.out.print(key+" ");
+            System.out.print(refunds.get(key).getCustomer().getCustomerName()+" ");
+            System.out.print(refunds.get(key).getPay_amount()+" ");
+            System.out.print(refunds.get(key).getProvider()+" ");
+            System.out.print(refunds.get(key).getService_name());
+            System.out.println();
+        }
+    }
+    public void acceptRefund(int id) {
+        if(refundC.acceptRequest(id))
+            System.out.println("Refund Accepted.");
+        else
+            System.out.println("Wrong Transaction ID");
+    }
+    public void refuseRefund(int id) {
+        if(refundC.requestRefund(id))
+            System.out.println("Refund Accepted.");
+        else
+            System.out.println("Wrong Transaction ID");
     }
 }
