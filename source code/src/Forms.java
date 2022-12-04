@@ -3,10 +3,23 @@ import java.util.Vector;
 
 public abstract class Forms {
     protected double pay_amount;
-    protected Vector<String>info;
-    public Vector<String> create_form(){
+    public Vector<String>info = new Vector<String>();
+    protected String provider="";
+    public Vector<String> create_form(Vector<String> providers){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please Enter the amount you would like to pay for the service:");
+        if(providers.size()>0)
+        {
+            System.out.println("Please choose a service provider:");
+            int i=1;
+            for (String name : providers) {
+                System.out.println(i+" - " + name);
+                i++;
+            }
+            int sp= sc.nextInt();
+            provider=providers.get(sp-1);
+
+        }
+        System.out.print("Please Enter the amount you would like to pay for the service:");
         setPay_amount(sc.nextDouble());
         while(getPay_amount() <1)
         {
@@ -14,6 +27,7 @@ public abstract class Forms {
             setPay_amount(sc.nextDouble());
         }
         info.add(0,Double.toString(getPay_amount()));
+        info.add(1,provider);
         extra_info();
         return  info;
     }
