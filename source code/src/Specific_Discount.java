@@ -2,7 +2,7 @@ public class Specific_Discount extends Discount {
 
     public void setService(String s){
         if (s.toLowerCase().contains("internet")){
-            registerService(new Internet_service());
+            registerService(new InternetService());
         }
         else if (s.toLowerCase().contains("mobile")) {
             registerService(new Mobile_recharge());

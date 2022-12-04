@@ -4,7 +4,7 @@ public class Overall_Discount extends Discount {
 
     Overall_Discount(){
         registerService(new Mobile_recharge());
-        registerService(new Internet_service());
+        registerService(new InternetService());
         registerService(new Landline());
         registerService(new Donations());
     }
