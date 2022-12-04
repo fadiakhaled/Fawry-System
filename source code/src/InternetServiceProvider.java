@@ -1,25 +1,25 @@
 import java.util.List;
 import java.util.Vector;
 
-public class InternetService_Provider extends Service_provider{
+public class InternetServiceProvider extends ServiceProvider {
     private InternetService service=new InternetService();
     public static  Vector<String>names=new Vector<String>(List.of(new String[]{"Vodafone","Orange","Etisalat","We"}));
-    static private InternetService_Provider instance;
+    static private InternetServiceProvider instance;
 
-    private InternetService_Provider(){}
+    private InternetServiceProvider(){}
 
-    public static InternetService_Provider getInstance()
+    public static InternetServiceProvider getInstance()
     {
         if(instance==null)
         {
-            instance=new InternetService_Provider();
+            instance=new InternetServiceProvider();
         }
         return instance;
     }
 
     public void choose_form()
     {
-        form= new Mobile_form();
+        form= new MobileForm();
         Vector<String> info=form.create_form(names);
         setPay_amount(Double.parseDouble(info.get(0)));
         getService().setProvider(info.get(1));
@@ -57,7 +57,7 @@ public class InternetService_Provider extends Service_provider{
     }
 
     public static void setNames(Vector<String> names) {
-        InternetService_Provider.names = names;
+        InternetServiceProvider.names = names;
     }
     public void addService_provider(String name)
     {

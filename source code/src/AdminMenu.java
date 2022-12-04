@@ -2,8 +2,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 
-public class Admin_Menu {
-    private final Discount_Controller discountController = new Discount_Controller();
+public class AdminMenu {
+    private final DiscountController discountController = new DiscountController();
     private final RefundController refundC = new RefundController();
     Scanner sc = new Scanner(System.in);
     public static String Email;
@@ -84,7 +84,7 @@ public class Admin_Menu {
 
         }
     }
-    
+
     public void getRefunds() {
         HashMap<Integer,Transaction> refunds = refundC.getRefunds();
         for (Integer key: refunds.keySet()){

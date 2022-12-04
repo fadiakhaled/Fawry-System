@@ -1,4 +1,4 @@
-public class Discount_Controller {
+public class DiscountController {
 
     Services internetService = new InternetService();
     Services mobileRecharge = new Mobile_recharge();
@@ -6,20 +6,20 @@ public class Discount_Controller {
     Services landline = new Landline();
 
     public boolean createOverallDiscount(double discAmount) {
-        Discount oDiscount = new Overall_Discount();
+        Discount oDiscount = new OverallDiscount();
         return oDiscount.setDiscount(discAmount);
     }
     public boolean createSpecificDiscount (double discAmount, String servName) {
-        Specific_Discount sDiscount = new Specific_Discount();
+        SpecificDiscount sDiscount = new SpecificDiscount();
         sDiscount.setService(servName);
         return sDiscount.setDiscount(discAmount);
     }
     public void removeAllDiscount(){
-        Overall_Discount remALlDiscount = new Overall_Discount();
+        OverallDiscount remALlDiscount = new OverallDiscount();
         remALlDiscount.removeDiscount();
     }
     public void removeSpecificDiscount(String name){
-        Specific_Discount remSpecDiscount = new Specific_Discount();
+        SpecificDiscount remSpecDiscount = new SpecificDiscount();
         remSpecDiscount.setService(name);
         remSpecDiscount.removeDiscount();
     }

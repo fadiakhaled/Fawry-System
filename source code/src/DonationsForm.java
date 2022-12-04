@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Donations_form extends Forms{
+public class DonationsForm extends Forms{
     private String donation_location;
 
     public void extra_info()

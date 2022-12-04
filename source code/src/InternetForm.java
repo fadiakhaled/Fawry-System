@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Mobile_form extends Forms{
+public class InternetForm extends Forms{
     public String mobile_num;
     public void extra_info()
     {
@@ -8,6 +8,7 @@ public class Mobile_form extends Forms{
         Scanner sc = new Scanner(System.in);
         setMobile_num(sc.nextLine());
         info.add(mobile_num);
+
     }
     public String  getMobile_num() {
         return mobile_num;

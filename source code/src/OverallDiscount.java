@@ -1,8 +1,6 @@
-import java.util.Vector;
+public class OverallDiscount extends Discount {
 
-public class Overall_Discount extends Discount {
-
-    Overall_Discount(){
+    OverallDiscount(){
         registerService(new Mobile_recharge());
         registerService(new InternetService());
         registerService(new Landline());

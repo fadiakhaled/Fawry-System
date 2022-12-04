@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Vector;
 
-public class DonationService_provider extends Service_provider {
+public class DonationService_provider extends ServiceProvider {
     private Donations service = new Donations();
     public static  Vector<String>names=new Vector<String>(List.of(new String[]{}));
 
@@ -19,7 +19,7 @@ public class DonationService_provider extends Service_provider {
     }
 
     public void choose_form() {
-        form = new Donations_form();
+        form = new DonationsForm();
         Vector<String> info = form.create_form(names);
         setPay_amount(Double.parseDouble(info.get(0)));
         getService().setProvider(info.get(1));

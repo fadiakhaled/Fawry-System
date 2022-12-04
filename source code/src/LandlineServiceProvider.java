@@ -1,19 +1,19 @@
 import java.util.List;
 import java.util.Vector;
 
-public class LandlineService_provider  extends Service_provider{
+public class LandlineServiceProvider extends ServiceProvider {
     private Landline service=new Landline();
     public static  Vector<String>names=new Vector<String>(List.of(new String[]{}));
 
-    static private LandlineService_provider instance;
+    static private LandlineServiceProvider instance;
 
-    private LandlineService_provider(){}
+    private LandlineServiceProvider(){}
 
-    public static LandlineService_provider getInstance()
+    public static LandlineServiceProvider getInstance()
     {
         if(instance==null)
         {
-            instance=new LandlineService_provider();
+            instance=new LandlineServiceProvider();
         }
         return instance;
     }
@@ -59,7 +59,7 @@ public class LandlineService_provider  extends Service_provider{
     }
 
     public static void setNames(Vector<String> names) {
-        LandlineService_provider.names = names;
+        LandlineServiceProvider.names = names;
     }
     public void addService_provider(String name)
     {

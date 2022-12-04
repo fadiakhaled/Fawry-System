@@ -1,4 +1,4 @@
-public class Specific_Discount extends Discount {
+public class SpecificDiscount extends Discount {
 
     public void setService(String s){
         if (s.toLowerCase().contains("internet")){

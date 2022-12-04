@@ -1,10 +1,9 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Customer_Menu {
+public class CustomerMenu {
     CustomerController customerController = new CustomerController();
     public RefundController refundC = new RefundController();
-    Discount_Controller dis = new Discount_Controller();
+    DiscountController dis = new DiscountController();
     Scanner sc = new Scanner(System.in);
     public static String Email;
     public static String Password;
@@ -15,7 +14,7 @@ public class Customer_Menu {
     private double amount;
     private Payment payment;
 
-    private final Discount_Controller discountController = new Discount_Controller();
+    private final DiscountController discountController = new DiscountController();
 
 
     public void ShowUserMenu() {
@@ -123,7 +122,7 @@ public class Customer_Menu {
                 int option = sc.nextInt();
                 switch (option) {
                     case 1 -> {
-                        InternetService_Provider ISP =  InternetService_Provider.getInstance();
+                        InternetServiceProvider ISP =  InternetServiceProvider.getInstance();
 
                         ISP.create_transaction(currentCustomer, payment);
                     }
@@ -138,7 +137,7 @@ public class Customer_Menu {
                         DSP.create_transaction(currentCustomer, payment);
                     }
                     case 4 -> {
-                        LandlineService_provider LSP =  LandlineService_provider.getInstance();
+                        LandlineServiceProvider LSP =  LandlineServiceProvider.getInstance();
                         LSP.create_transaction(currentCustomer, payment);
                     }
 

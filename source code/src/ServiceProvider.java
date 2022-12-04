@@ -1,7 +1,6 @@
 import java.util.HashMap;
-import java.util.Vector;
 
-public abstract class Service_provider {
+public abstract class ServiceProvider {
     protected Forms form;
     protected Payment payment;
     protected double pay_amount;
@@ -28,7 +27,7 @@ public abstract class Service_provider {
     }
 
     public static void setTrans_ID(int trans_ID) {
-        Service_provider.trans_ID = trans_ID;
+        ServiceProvider.trans_ID = trans_ID;
     }
 
     public Forms getForm() {

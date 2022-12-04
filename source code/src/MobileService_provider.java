@@ -1,8 +1,7 @@
-import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 
-public class MobileService_provider extends Service_provider{
+public class MobileService_provider extends ServiceProvider {
     private Mobile_recharge service=new Mobile_recharge();
     public static  Vector<String>names=new Vector<String>(List.of(new String[]{"Vodafone","Orange","Etisalat","We"}));
 
@@ -21,7 +20,7 @@ public class MobileService_provider extends Service_provider{
 
     public void choose_form()
     {
-        form= new Mobile_form();
+        form= new MobileForm();
         Vector<String>info=form.create_form(names);
         setPay_amount(Double.parseDouble(info.get(0)));
         getService().setProvider(info.get(1));
