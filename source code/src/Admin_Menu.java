@@ -103,7 +103,7 @@ public class Admin_Menu {
             System.out.println("Wrong Transaction ID");
     }
     public void refuseRefund(int id) {
-        if(refundC.requestRefund(id))
+        if(refundC.refuseRequest(id))
             System.out.println("Refund Accepted.");
         else
             System.out.println("Wrong Transaction ID");
