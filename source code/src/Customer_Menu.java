@@ -1,48 +1,45 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Customer_Menu {
-    String name;
+    CustomerController customer=new CustomerController();
+    Discount_Controller dis=new Discount_Controller();
+    Scanner sc=new Scanner(System.in);
+    private String service;
+    private String creditcard;
+    private double amount;
+
     private final Discount_Controller discountController = new Discount_Controller();
 
 
-    ArrayList<String> arraylist_1 = new ArrayList<String>();
-
-    Customer_Menu()
+    public void ShowUserMenu()
     {
-        arraylist_1.add("Mobile Recharge Services");
-        arraylist_1.add("Internet Payment Services");
-        arraylist_1.add("Landline Services");
-        arraylist_1.add("Donations");
+        System.out.println("1: Search for services");
+        System.out.println("2: Check for discount");
+        System.out.println("3: Add to wallet");
+        System.out.println("4: Ask for refund");
+        int choice = sc.nextInt();
+
+        switch (choice) {
+            case 1 -> {
+                System.out.print("Please Enter service name: ");
+                service = sc.next().toLowerCase();
+                System.out.println(customer.Search(service));
+            }
+            case 2 -> {
+                dis.returnDiscounts();
+            }
+            case 3 ->
+                    {
+                        System.out.println("Please enter credit card number and the amount you'd like to add to your wallet");
+                        creditcard= sc.next();
+                        System.out.println("Please enter the amount you'd like to add to your wallet");
+                        amount= sc.nextDouble();
+                        System.out.println("Your wallet now contains "+customer.AddToWallet(creditcard,amount));
+                    }
+        }
 
     }
 
-
-    String Search(String s)
-    {
-        char c=s.charAt(0);
-        if(c=='m' )
-        {
-            name=arraylist_1 .get(0);
-        }
-        else if(c=='i')
-        {
-            name=arraylist_1 .get(1);
-        }
-        else if(c=='l' )
-        {
-            name=arraylist_1 .get(2);
-        }
-        else if(c=='d')
-        {
-            name=arraylist_1 .get(3);
-        }
-        else
-        {
-            name="No result for "+s;
-        }
-        return name;
-    }
-    void checkDiscounts() {
-        discountController.returnDiscounts();
-    }
 
 }

@@ -1,6 +1,6 @@
 public class Discount_Controller {
 
-    Services internetPayment = new Internet_service();
+    Services internetService = new Internet_service();
     Services mobileRecharge = new Mobile_recharge();
     Services donations = new Donations();
     Services landline = new Landline();
@@ -25,7 +25,7 @@ public class Discount_Controller {
     }
 
     void returnDiscounts() {
-        System.out.println("Discount Applied on Internet Payment Services: " + internetPayment.getDiscount() * 100 + "%" );
+        System.out.println("Discount Applied on Internet Payment Services: " + internetService.getDiscount() * 100 + "%" );
         System.out.println("Discount Applied on Mobile Recharge Services: " + mobileRecharge.getDiscount()*100 + "%");
         System.out.println("Discount Applied on Donations Services: " + donations.getDiscount()*100 + "%");
         System.out.println("Discount Applied on Landline Services: " + landline.getDiscount()*100 + "%");

@@ -7,9 +7,6 @@ public class Main{
 
         Customer_Menu m=new Customer_Menu();
         Admin_Menu adminMenu = new Admin_Menu();
-
-
-        //AuthenticationEntity entity=new AuthenticationEntity();
         String Email;
         String Password;
         String userName;
@@ -39,47 +36,9 @@ public class Main{
                         break;
                     }
                 }
-                while (true) {
-                    System.out.println("[1]Add service\n[2]Add Discount\n[3]Remove Discounts\n[4]Show Refunds");
-                    int choice = sc.nextInt();
-                    switch (choice) {
-                        case 1 -> System.out.println("lesa");
-                        case 2 -> {
-                            System.out.println("[1]Add Overall Discount\n[2]Add a Specific Discount");
-                            int ch2 = sc.nextInt();
-                            System.out.print("Add discount amount: ");
-                            double amount = sc.nextDouble();
-                            switch (ch2) {
-                                case 1 -> adminMenu.createOverallDiscount(amount);
-                                case 2 -> {
-                                    System.out.print("Add service name: ");
-                                    sc.nextLine();
-                                    String sname = sc.nextLine();
-                                    adminMenu.createSpecificDiscount(amount, sname);
-                                }
-                            }
-                        }
-                        case 3 -> {
-                            System.out.println("[1]Remove all discounts\n[2]Remove a Specific Discount");
-                            int ch2 = sc.nextInt();
-                            switch (ch2) {
-                                case 1 -> adminMenu.removeAllDiscount();
-                                case 2 -> {
-                                    sc.nextLine();
-                                    System.out.print("Add service name: ");
-                                    String sname = sc.nextLine();
-                                    adminMenu.removeSpecificDiscount(sname);
-                                }
-                            }
-                        }
-                    }
-                    m.checkDiscounts();
-                    System.out.println("[1]Continue\n[2] Exit Program");
-                    System.out.print("===> ");
-                    int ch = sc.nextInt();
-                    if (ch == 2) break;
-                }
-            } else if (x == 2)//sign in user
+                adminMenu.ShowAdminMenu();
+            }
+            else if (x == 2)//sign in user
             {
                 int n = 2;
                 while (n > 0) {
@@ -107,21 +66,7 @@ public class Main{
                                 break;
                             }
                         }
-                        System.out.println("1: Search for services");
-                        System.out.println("2: Check for discount");
-                        System.out.println("3: Add to wallet");
-                        System.out.println("4: Ask for refund");
-                        int choice = sc.nextInt();
-                        switch (choice) {
-                            case 1 -> {
-                                System.out.print("Please Enter service name: ");
-                                service = sc.next().toLowerCase();
-                                System.out.println(m.Search(service));
-                            }
-                            case 2 -> {
-                                m.checkDiscounts();
-                            }
-                        }
+                        m.ShowUserMenu();
                     } else if (y == 2)//sign up user
                     {
                         System.out.print("Please Enter user name: ");
@@ -133,6 +78,7 @@ public class Main{
                         Password = sc.next();
                         SignInBoundry s = new SignInBoundry(userName, Email, Password);
                         System.out.println(s.SignUp());
+                        m.ShowUserMenu();
                     }
                 }
             }

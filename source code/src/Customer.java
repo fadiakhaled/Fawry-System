@@ -1,5 +1,6 @@
 public class Customer extends User {
     private double wallet;
+    public Customer(){}
     public Customer(String customerName, String email, String password)
     {
         this.setCustomerName(customerName);
