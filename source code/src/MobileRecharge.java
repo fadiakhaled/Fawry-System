@@ -1,6 +1,4 @@
-import java.util.Vector;
-
-public class Mobile_recharge extends Services {
+public class MobileRecharge extends Services {
     public static double discount = 0.0;
     String name="Mobile recharge services";
     private String mobile_num;

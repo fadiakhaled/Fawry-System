@@ -1,19 +1,19 @@
 import java.util.List;
 import java.util.Vector;
 
-public class MobileService_provider extends ServiceProvider {
-    private Mobile_recharge service=new Mobile_recharge();
+public class MobileServiceProvider extends ServiceProvider {
+    private MobileRecharge service=new MobileRecharge();
     public static  Vector<String>names=new Vector<String>(List.of(new String[]{"Vodafone","Orange","Etisalat","We"}));
 
-    static private MobileService_provider instance;
+    static private MobileServiceProvider instance;
 
-    private MobileService_provider(){}
+    private MobileServiceProvider(){}
 
-    public static MobileService_provider getInstance()
+    public static MobileServiceProvider getInstance()
     {
         if(instance==null)
         {
-            instance=new MobileService_provider();
+            instance=new MobileServiceProvider();
         }
         return instance;
     }
@@ -47,11 +47,11 @@ public class MobileService_provider extends ServiceProvider {
     }
 
 
-    public Mobile_recharge getService() {
+    public MobileRecharge getService() {
         return service;
     }
 
-    public void setService(Mobile_recharge service) {
+    public void setService(MobileRecharge service) {
         this.service=service;
     }
 
@@ -60,7 +60,7 @@ public class MobileService_provider extends ServiceProvider {
     }
 
     public static void setNames(Vector<String> names) {
-        MobileService_provider.names = names;
+        MobileServiceProvider.names = names;
     }
     public void addService_provider(String name)
     {
