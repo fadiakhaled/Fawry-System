@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class CustomerController {
     ArrayList<String> arraylist_1 = new ArrayList<String>();
     private String name;
-    Customer customer=new Customer();
 
     CustomerController()
     {
@@ -38,7 +37,7 @@ public class CustomerController {
         }
         return name;
     }
-    double AddToWallet(String cc,double amount)
+    double AddToWallet(Customer customer, String cc,double amount)
     {
         if(cc.length()==12)
         {
@@ -46,4 +45,5 @@ public class CustomerController {
         }
         return customer.getWallet();
     }
+
 }

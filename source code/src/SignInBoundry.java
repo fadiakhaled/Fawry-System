@@ -55,5 +55,13 @@ public class SignInBoundry {
         return controller.SignUpUser(user,Email,Password);
     }
 
+    Customer getCustomer(String Email) {
+       return controller.getCurrentCustomer(Email);
+    }
+
+    Admin getAdmin (String Email) {
+       return controller.getCurrentAdmin(Email);
+    }
+
 
 }

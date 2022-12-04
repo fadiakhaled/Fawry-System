@@ -8,7 +8,8 @@ public class Admin_Menu {
     Scanner sc = new Scanner(System.in);
     public static String Email;
     public static String Password;
-    public static String userName;
+
+    static Admin currentAdmin = new Admin("maimostafa", "maimostafa@gmail.com", "321");
 
 
     public void ShowAdminMenu() {
@@ -34,7 +35,7 @@ public class Admin_Menu {
                     System.out.println();
                     s = new SignInBoundry(Email,Password);
                     if (s.SignInAdmin()) {
-                        break;
+                        currentAdmin = s.getAdmin(Email);
                     }
                 }
                 System.out.println("[1]Add service\n[2]Add Discount\n[3]Remove Discounts\n[4]Show Refunds");

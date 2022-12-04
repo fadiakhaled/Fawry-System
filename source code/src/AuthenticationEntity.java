@@ -24,15 +24,7 @@ public class AuthenticationEntity  {
     {
         if (user.containsKey(Email))
         {
-            if (Password.equals(user.get(Email).getPassword()))
-            {
-               details(user.get(Email).getCustomerName(),Email,Password);
-               return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Password.equals(user.get(Email).getPassword());
         }
         else
         {
@@ -43,16 +35,7 @@ public class AuthenticationEntity  {
     {
          if(admin.containsKey(Email))
          {
-            if (Password.equals(admin.get(Email).getPassword()))
-            {
-
-                Info(admin.get(Email).getAdminName(), Email, Password);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+             return Password.equals(admin.get(Email).getPassword());
 
         }
         else
@@ -78,18 +61,17 @@ public class AuthenticationEntity  {
             Customer cus=new Customer(UserName,Email,Password);
             user.put(cus.getEmail(), cus);
             username.put(cus.getCustomerName(), cus);
-            details(user.get(Email).getCustomerName(),Email,Password);
             return "Sign up successfully";
 
         }
     }
-    static Customer details(String username,String email,String password)
+    static Customer details(String email)
     {
-        return new Customer(username,email,password);
+        return user.get(email);
     }
-    static Admin Info(String username,String email,String password)
+    static Admin Info(String email)
     {
-        return new Admin(username,email,password);
+        return admin.get(email);
     }
 
 

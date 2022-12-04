@@ -1,3 +1,5 @@
+import java.util.EnumMap;
+
 public class AuthenticationController  {
 
     AuthenticationController(){
@@ -21,6 +23,14 @@ public class AuthenticationController  {
 
         return AuthenticationEntity.CreateAccount(Username, Email,password);
 
+   }
+
+   Customer getCurrentCustomer(String Email) {
+        return AuthenticationEntity.details(Email);
+   }
+
+   Admin getCurrentAdmin(String Email){
+        return AuthenticationEntity.Info(Email);
    }
 
 
