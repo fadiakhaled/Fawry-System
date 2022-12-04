@@ -5,14 +5,14 @@ public class Discount_Controller {
     Services donations = new Donations();
     Services landline = new Landline();
 
-    public void createOverallDiscount(double discAmount) {
+    public boolean createOverallDiscount(double discAmount) {
         Discount oDiscount = new Overall_Discount();
-        oDiscount.setDiscount(discAmount);
+        return oDiscount.setDiscount(discAmount);
     }
-    public void createSpecificDiscount (double discAmount, String servName) {
+    public boolean createSpecificDiscount (double discAmount, String servName) {
         Specific_Discount sDiscount = new Specific_Discount();
         sDiscount.setService(servName);
-        sDiscount.setDiscount(discAmount);
+        return sDiscount.setDiscount(discAmount);
     }
     public void removeAllDiscount(){
         Overall_Discount remALlDiscount = new Overall_Discount();

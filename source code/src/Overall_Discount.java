@@ -1,3 +1,5 @@
+import java.util.Vector;
+
 public class Overall_Discount extends Discount {
 
     Overall_Discount(){
@@ -8,10 +10,13 @@ public class Overall_Discount extends Discount {
     }
 
     @Override
-    public void setDiscount(double amount) {
-        for (int i = 0; i < 4; i++){
-            services.get(i).updateDiscount(amount);
+    public boolean setDiscount(double amount) {
+        for (Services service : services) {
+            if (service.getDiscount()+amount < 1)
+                service.updateDiscount(amount);
+            else return false;
         }
+        return true;
     }
 
     @Override

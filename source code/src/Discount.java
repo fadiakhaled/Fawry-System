@@ -5,6 +5,6 @@ public abstract class Discount {
     public void registerService(Services service) {
         services.add(service);
     }
-    public abstract void setDiscount(double amount);
+    public abstract boolean setDiscount(double amount);
     public abstract void removeDiscount();
 }

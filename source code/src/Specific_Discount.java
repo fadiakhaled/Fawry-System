@@ -16,9 +16,14 @@ public class Specific_Discount extends Discount {
     }
 
     @Override
-    public void setDiscount(double amount) {
-        if (services.size() > 0)
-            services.get(0).updateDiscount(amount);
+    public boolean setDiscount(double amount) {
+        if (services.size() > 0) {
+            if (services.get(0).getDiscount() + amount < 1)
+                services.get(0).updateDiscount(amount);
+            else
+                return false;
+        }
+        return true;
     }
 
     @Override
