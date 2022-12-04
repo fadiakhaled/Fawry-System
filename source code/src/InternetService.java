@@ -1,8 +1,9 @@
+import java.util.Arrays;
 import java.util.Vector;
 
-public class Mobile_recharge extends Services {
+public class InternetService extends Services{
     public static double discount = 0.0;
-    String name="Mobile recharge services";
+   String name="Internet Payment services";
     private String mobile_num;
 
     public void updateDiscount(double amount) {

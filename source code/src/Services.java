@@ -1,4 +1,27 @@
-public interface Services {
-    public void updateDiscount(double amount);
-    public double getDiscount();
+import java.util.Vector;
+
+public abstract class Services {
+    protected String name;
+    protected double discount;
+    private String provider;
+    public abstract double getDiscount();
+    public abstract void updateDiscount(double d);
+
+    public String getName()
+    {
+        return name;
+    }
+    public void setName(String name)
+    {
+        this.name=name;
+    }
+
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
 }
