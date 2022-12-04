@@ -14,12 +14,6 @@ public class Admin_Menu {
 
     public void ShowAdminMenu() {
         while (true) {
-            int x;
-            System.out.println("[1]: Sign in");
-            System.out.println("[1]: Sign up");
-             x= sc.nextInt();
-            if (x == 1)//Sign In admin
-            {
                 System.out.print("Please Enter your email: ");
                 Email = sc.next().toLowerCase();
                 System.out.print("Please Enter your password: ");
@@ -45,35 +39,19 @@ public class Admin_Menu {
                     case 2 -> {
                         System.out.println("[1]Add Overall Discount\n[2]Add a Specific Discount");
                         int ch2 = sc.nextInt();
-                        System.out.print("Add discount amount: ");
+                        System.out.print("Add discount amount [0..1]: ");
                         double amount = sc.nextDouble();
                         switch (ch2) {
-                            case 1 -> {
-                                discountController.createOverallDiscount(amount);
-                                discountController.returnDiscounts();
-                            }
-
-                            case 2 -> {
-                                System.out.print("Add service name: ");
-                                sc.nextLine();
-                                String sname = sc.nextLine();
-                                discountController.createSpecificDiscount(amount, sname);
-                                discountController.returnDiscounts();
-                            }
+                            case 1 -> createOverallDiscount(amount);
+                            case 2 -> createSpecificDiscount(amount);
                         }
-
                     }
                     case 3 -> {
                         System.out.println("[1]Remove all discounts\n[2]Remove a Specific Discount");
                         int ch2 = sc.nextInt();
                         switch (ch2) {
-                            case 1 -> discountController.removeAllDiscount();
-                            case 2 -> {
-                                sc.nextLine();
-                                System.out.print("Add service name: ");
-                                String sname = sc.nextLine();
-                                discountController.removeSpecificDiscount(sname);
-                            }
+                            case 1 -> removeAllDiscount();
+                            case 2 -> removeSpecificDiscount();
                         }
                     }
                     case 4 -> {
@@ -94,7 +72,6 @@ public class Admin_Menu {
                                         refuseRefund(id);
                                     }
                                 }
-
                             }
                         }
                     }
@@ -104,10 +81,10 @@ public class Admin_Menu {
                 System.out.print("===> ");
                 int ch = sc.nextInt();
                 if (ch == 2) break;
-            }
-        }
 
+        }
     }
+    
     public void getRefunds() {
         HashMap<Integer,Transaction> refunds = refundC.getRefunds();
         for (Integer key: refunds.keySet()){
@@ -130,5 +107,27 @@ public class Admin_Menu {
             System.out.println("Refund Accepted.");
         else
             System.out.println("Wrong Transaction ID");
+    }
+
+    void createOverallDiscount(double amount) {
+        if (!discountController.createOverallDiscount(amount)) {
+            System.out.println("You cannot apply this discount, some services may reach 100% discount");
+        }
+    }
+    void createSpecificDiscount(double amount) {
+        System.out.print("Add service name: ");
+        sc.nextLine();
+        String sname = sc.nextLine();
+        if (!discountController.createSpecificDiscount(amount, sname))
+            System.out.println("You cannot apply more discounts to this service");
+    }
+    void removeAllDiscount(){
+        discountController.removeAllDiscount();
+    }
+    void removeSpecificDiscount() {
+        sc.nextLine();
+        System.out.print("Add service name: ");
+        String sname = sc.nextLine();
+        discountController.removeSpecificDiscount(sname);
     }
 }
