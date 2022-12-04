@@ -78,6 +78,7 @@ public class AuthenticationEntity  {
             Customer cus=new Customer(UserName,Email,Password);
             user.put(cus.getEmail(), cus);
             username.put(cus.getCustomerName(), cus);
+            details(user.get(Email).getCustomerName(),Email,Password);
             return "Sign up successfully";
 
         }
