@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class CustomerMenu {
     CustomerController customerController = new CustomerController();
     public RefundController refundC = new RefundController();
@@ -127,7 +128,7 @@ public class CustomerMenu {
                         ISP.create_transaction(currentCustomer, payment);
                     }
                     case 2 -> {
-                        MobileService_provider MSP = MobileService_provider.getInstance();
+                        MobileServiceProvider MSP = MobileServiceProvider.getInstance();
                         MSP.printService_providers();
                         int sp= sc.nextInt();
                         MSP.create_transaction(currentCustomer, payment);

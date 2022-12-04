@@ -5,7 +5,7 @@ public class SpecificDiscount extends Discount {
             registerService(new InternetService());
         }
         else if (s.toLowerCase().contains("mobile")) {
-            registerService(new Mobile_recharge());
+            registerService(new MobileRecharge());
         }
         else if (s.toLowerCase().contains("donation")) {
             registerService(new Donations());

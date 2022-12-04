@@ -1,7 +1,7 @@
 public class OverallDiscount extends Discount {
 
     OverallDiscount(){
-        registerService(new Mobile_recharge());
+        registerService(new MobileRecharge());
         registerService(new InternetService());
         registerService(new Landline());
         registerService(new Donations());
@@ -23,6 +23,5 @@ public class OverallDiscount extends Discount {
             services.get(i).updateDiscount(-services.get(i).getDiscount());
         }
     }
-
 
 }

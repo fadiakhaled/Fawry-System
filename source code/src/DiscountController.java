@@ -1,7 +1,8 @@
 public class DiscountController {
 
+
     Services internetService = new InternetService();
-    Services mobileRecharge = new Mobile_recharge();
+    Services mobileRecharge = new MobileRecharge();
     Services donations = new Donations();
     Services landline = new Landline();
 
