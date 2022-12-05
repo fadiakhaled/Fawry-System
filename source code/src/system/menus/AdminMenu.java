@@ -118,7 +118,8 @@ public class AdminMenu {
     void createOverallDiscount(double amount) {
         if (!discountController.createOverallDiscount(amount)) {
             System.out.println("You cannot apply this discount, some services may reach 100% discount");
-        }
+        }else System.out.println("Discount is added Successfully");
+
     }
     void createSpecificDiscount(double amount) {
         System.out.print("Add service name: ");
@@ -126,6 +127,8 @@ public class AdminMenu {
         String sname = sc.nextLine();
         if (!discountController.createSpecificDiscount(amount, sname))
             System.out.println("You cannot apply more discounts to this service");
+        else
+            System.out.println("Discount is added Successfully");
     }
     void removeAllDiscount(){
         discountController.removeAllDiscount();
