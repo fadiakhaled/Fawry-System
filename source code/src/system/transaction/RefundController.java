@@ -46,9 +46,4 @@ public class RefundController {
         return false;
 
     }
-    public Transaction searchRefunds(int id)
-    {
-        Transaction found = Transactions.findRefund(id);
-        return found;
-    }
 }

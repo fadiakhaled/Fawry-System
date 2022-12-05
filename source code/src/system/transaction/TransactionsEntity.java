@@ -23,12 +23,7 @@ public class TransactionsEntity {
     }
     public Transaction findRefund(int id)
     {
-        if(refunds.containsKey(id))
-        {
-            return refunds.get(id);
-        }
-        else
-            return null;
+        return refunds.get(id);
     }
     public void removeRefundRequest(int id)
     {

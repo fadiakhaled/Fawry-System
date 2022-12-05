@@ -173,10 +173,17 @@ public class CustomerMenu {
     }
     public void requestRefund(int id)
     {
-        if(refundC.requestRefund(id) && currentCustomer.getCustomerName()==refundC.getTransactionByID(id).getCustomer().getCustomerName())
-            System.out.println("Refund request done successfully");
+        if(currentCustomer.getCustomerName()==refundC.getTransactionByID(id).getCustomer().getCustomerName())
+        {
+            if(refundC.requestRefund(id))
+                System.out.println("Refund request done successfully.");
+            else
+                System.out.println("Wrong Transaction ID.");
+        }
+
         else
-            System.out.println("Wrong Transaction ID");
+            System.out.println("No such Transaction for the current user.");
+
     }
 }
 
