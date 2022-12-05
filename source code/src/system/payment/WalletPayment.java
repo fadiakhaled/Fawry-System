@@ -1,7 +1,7 @@
 package system.payment;
 
 public class WalletPayment implements Payment {
-    double wallet;
+    private double wallet;
     public WalletPayment(double w)
     {
         wallet=w;
