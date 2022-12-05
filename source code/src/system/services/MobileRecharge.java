@@ -1,16 +1,16 @@
 package system.services;
 
 public class MobileRecharge extends Services {
-    public static double discount = 0.0;
+    private static double mobileDiscount = 0.0;
     String name="Mobile recharge services";
     private String mobile_num;
 
     public void updateDiscount(double amount) {
-        discount = discount + amount;
+        mobileDiscount = mobileDiscount + amount;
     }
 
     public double getDiscount() {
-        return discount;
+        return mobileDiscount;
     }
 
     public String getMobile_num() {

@@ -1,16 +1,16 @@
 package system.services;
 
 public class InternetService extends Services {
-    public static double discount = 0.0;
+    private static double internetDiscount = 0.0;
    String name="Internet Payment services";
     private String mobile_num;
 
     public void updateDiscount(double amount) {
-        discount = discount + amount;
+        internetDiscount = internetDiscount + amount;
     }
 
     public double getDiscount() {
-        return discount;
+        return internetDiscount;
     }
 
     public String getMobile_num() {

@@ -1,16 +1,16 @@
 package system.services;
 
 public class Donations extends Services {
-    public static double discount = 0.0;
+    private static double donationDiscount = 0.0;
     private String location;
     String name="Donations services";
 
     public void updateDiscount(double amount) {
-        discount = discount + amount;
+        donationDiscount = donationDiscount + amount;
     }
 
     public double getDiscount() {
-        return discount;
+        return donationDiscount;
     }
 
     public String getLocation() {

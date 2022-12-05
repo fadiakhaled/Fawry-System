@@ -1,17 +1,18 @@
 package system.services;
 
 public class Landline extends Services {
-    public static double discount = 0.0;
+    private static double landlineDiscount = 0.0;
     private String receipt_plan;
     private String landline_num;
+
     private String name="Landline services";
 
     public void updateDiscount(double amount) {
-        discount = discount + amount;
+        landlineDiscount = landlineDiscount + amount;
     }
 
     public double getDiscount() {
-        return discount;
+        return landlineDiscount;
     }
 
     public String getReceipt_plan() {
