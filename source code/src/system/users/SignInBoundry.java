@@ -9,15 +9,12 @@ public class SignInBoundry {
     static Customer currentCustomer = new Customer("habibayasser", "habibayasser@gmail.com", "123");
     Scanner sc = new Scanner(System.in);
     static Admin currentAdmin = new Admin("maimostafa", "maimostafa@gmail.com", "321");
-    CustomerMenu m = new CustomerMenu();
+    CustomerMenu customerMenu = new CustomerMenu();
     AdminMenu adminMenu = new AdminMenu();
-    int x;
-    int ch;
-
+    int userType;
     private String Email;
     private String Password;
     private String user;
-    private int z;
     AuthenticationController controller = new AuthenticationController();
 
     public SignInBoundry(){};
@@ -85,8 +82,8 @@ public class SignInBoundry {
         System.out.println("[2]: User");
         System.out.println("[3]: Exit");
         System.out.print("Enter your choice: ");
-        x = sc.nextInt();
-        if(x==1) {
+        userType = sc.nextInt();
+        if(userType ==1) {
             System.out.print("Please Enter your email: ");
             Email = sc.next().toLowerCase();
             System.out.print("Please Enter your password: ");
@@ -110,7 +107,7 @@ public class SignInBoundry {
 
         }
 
-        else if(x==2){
+        else if(userType ==2){
             int y;
             System.out.println("1 :Sign in");
             System.out.println("2: Sign up");
@@ -137,7 +134,7 @@ public class SignInBoundry {
                     }
                 }
 
-                m.ShowUserMenu();}
+                customerMenu.ShowUserMenu();}
             else if (y == 2)//sign up user
             {
                 System.out.print("Please Enter user name: ");
@@ -150,22 +147,22 @@ public class SignInBoundry {
                 SignInBoundry s = new SignInBoundry(user, Email, Password);
                 System.out.println(s.SignUp());
                 currentCustomer = s.getCustomer(Email);
-                m.ShowUserMenu();
+                customerMenu.ShowUserMenu();
                 Show();
 
             }
 
         }
 
-        while(x!=3) {
-            while (x != 1 && x != 2) {
+        while(userType !=3) {
+            while (userType != 1 && userType != 2) {
                 System.out.print("Wrong Choice, Enter again: ");
-                x = sc.nextInt();
+                userType = sc.nextInt();
             }
 
-            if (x == 1) {
+            if (userType == 1) {
                 Show();
-            } else if (x == 2) {
+            } else if (userType == 2) {
                 Show();
             }
 
