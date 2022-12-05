@@ -1,6 +1,7 @@
 package system.providers;
 
 import java.util.HashMap;
+
 import system.forms.*;
 import system.users.*;
 import system.payment.*;
@@ -10,23 +11,26 @@ public abstract class ServiceProvider {
     protected Forms form;
     protected Payment payment;
     protected double pay_amount;
+    private TransactionsEntity transactions = new TransactionsEntity();
     protected Transaction trans;
-    protected static HashMap<Integer,Transaction> transactions = new HashMap<Integer,Transaction>();
     protected static int trans_ID = 0;
     protected Customer customer;
-    public void create_transaction( Customer c, Payment p) {
+
+    public void create_transaction(Customer c, Payment p) {
         this.setCustomer(c);
         this.setPayment(p);
         setTrans_ID(getTrans_ID() + 1);
         choose_form();
-        pay_transaction();
         create_Trans();
+        pay_transaction();
+
     }
+
     public abstract void create_Trans();
 
     public abstract void choose_form();
 
-    public abstract void pay_transaction() ;
+    public abstract void pay_transaction();
 
     public static int getTrans_ID() {
         return trans_ID;
@@ -68,15 +72,6 @@ public abstract class ServiceProvider {
         this.trans = trans;
     }
 
-    public HashMap<Integer,Transaction> getTransactions() {
-
-        return transactions;
-    }
-
-    public void setTransactions(HashMap<Integer,Transaction> transactions) {
-        this.transactions = transactions;
-    }
-
     public Customer getCustomer() {
         return customer;
     }
@@ -85,4 +80,11 @@ public abstract class ServiceProvider {
         this.customer = customer;
     }
 
+    public TransactionsEntity getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(TransactionsEntity transactions) {
+        this.transactions = transactions;
+    }
 }

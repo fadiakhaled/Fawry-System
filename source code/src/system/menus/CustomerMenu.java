@@ -1,10 +1,8 @@
 package system.menus;
 
 import system.discounts.DiscountController;
-import system.providers.DonationServiceProvider;
-import system.providers.InternetServiceProvider;
-import system.providers.LandlineServiceProvider;
-import system.providers.MobileServiceProvider;
+import system.providers.*;
+import system.payment.*;
 import system.users.Customer;
 import system.users.CustomerController;
 import system.users.SignInBoundry;
@@ -132,7 +130,7 @@ public class CustomerMenu {
                         payment = new WalletPayment(currentCustomer.getWallet());
                     }
                 }
-
+                System.out.println("Please choose one of the following services:");
                 System.out.println("1: Internet Payment services");
                 System.out.println("2: Mobile recharge services");
                 System.out.println("3: Donations services");
@@ -147,8 +145,6 @@ public class CustomerMenu {
                     }
                     case 2 -> {
                         MobileServiceProvider MSP = MobileServiceProvider.getInstance();
-                        MSP.printService_providers();
-                        int sp= sc.nextInt();
                         MSP.create_transaction(currentCustomer, payment);
                     }
                     case 3 -> {

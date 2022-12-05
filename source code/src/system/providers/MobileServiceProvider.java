@@ -36,7 +36,7 @@ public class MobileServiceProvider extends ServiceProvider {
     public void pay_transaction() {
         setPay_amount(getPay_amount()-(getService().getDiscount() * getPay_amount()));
         if (getPayment().pay(getPay_amount()) > -2) {
-            getTransactions().put(trans_ID,getTrans());
+            transactions.addTransaction(getTrans());
             System.out.println("Transaction completed successfully and amount " + getPay_amount() + " was paid.");
         } else if (getPayment().pay(getPay_amount()) > -1) {
             getCustomer().setWallet(getPayment().pay(getPay_amount()));
