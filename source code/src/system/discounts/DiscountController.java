@@ -25,8 +25,9 @@ public class DiscountController {
         oDiscount.removeDiscount();
     }
     public void removeSpecificDiscount(String name){
-        sDiscount.setService(name);
-        sDiscount.removeDiscount();
+        SpecificDiscount rsDis = new SpecificDiscount();
+        rsDis.setService(name);
+        rsDis.removeDiscount();
     }
 
     public Vector<Double> returnDiscounts() {

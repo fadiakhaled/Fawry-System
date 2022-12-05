@@ -7,6 +7,8 @@ import system.services.MobileRecharge;
 
 public class SpecificDiscount extends Discount {
 
+    // a function to check which service to be registered in the list to be notified according
+    // to a string representing or containing the service name
     public void setService(String s){
         if (s.toLowerCase().contains("internet")){
             registerService(new InternetService());
@@ -22,6 +24,8 @@ public class SpecificDiscount extends Discount {
         }
     }
 
+    // check first if the list is not empty in order to avoid null errors
+    //  check if the service can handle another discount addition without exceeding 1
     @Override
     public boolean setDiscount(double amount) {
         if (services.size() > 0) {
@@ -33,6 +37,7 @@ public class SpecificDiscount extends Discount {
         return true;
     }
 
+    // remove the discount for the service specified
     @Override
     public void removeDiscount() {
         if (services.size() > 0)
