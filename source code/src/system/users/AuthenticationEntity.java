@@ -21,7 +21,7 @@ public class AuthenticationEntity  {
 
     }
 
-     static public boolean CheckAccountForUser(String Email, String Password)
+     static public boolean CheckAccountForUser(String Email, String Password)//take the password and email to check for it in database(hashmap)for user
     {
         if (user.containsKey(Email))
         {
@@ -32,7 +32,7 @@ public class AuthenticationEntity  {
             return false;
         }
     }
-    static boolean CheckAccountForAdmin(String Email, String Password )
+    static boolean CheckAccountForAdmin(String Email, String Password )//take the password and email to check for it in database(hashmap)for admin
     {
          if(admin.containsKey(Email))
          {
@@ -45,7 +45,7 @@ public class AuthenticationEntity  {
         }
     }
 
-     static String CreateAccount(String UserName, String Email,String Password)
+     static String CreateAccount(String UserName, String Email,String Password)//create account for user
     {
 
         if(user.containsKey(Email))
