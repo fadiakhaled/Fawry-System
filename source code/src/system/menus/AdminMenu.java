@@ -39,7 +39,7 @@ public class AdminMenu {
                         currentAdmin = s.getAdmin(Email);
                     }
                 }
-                System.out.println("[1]Add service\n[2]Add Discount\n[3]Remove Discounts\n[4]Show Refunds");
+                System.out.println("[1]Add service provider\n[2]Add Discount\n[3]Remove Discounts\n[4]Show Refunds");
                 int choice = sc.nextInt();
                 switch (choice) {
                     case 1 -> {
@@ -51,7 +51,8 @@ public class AdminMenu {
                         System.out.println("5: cancel");
                         int option = sc.nextInt();
                         System.out.print("Please enter the name of the new service provider:");
-                        String provider= sc.next();
+                        sc.nextLine();
+                        String provider= sc.nextLine();
                         switch (option) {
                             case 1 -> {
                                 InternetServiceProvider ISP =  InternetServiceProvider.getInstance();

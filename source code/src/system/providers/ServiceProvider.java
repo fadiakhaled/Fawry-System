@@ -11,7 +11,7 @@ public abstract class ServiceProvider {
     protected Forms form;
     protected Payment payment;
     protected double pay_amount;
-    private TransactionsEntity transactions = new TransactionsEntity();
+    protected TransactionsEntity transactions = new TransactionsEntity();
     protected Transaction trans;
     protected static int trans_ID = 0;
     protected Customer customer;
