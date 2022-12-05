@@ -1,6 +1,8 @@
 package system.discounts;
 import system.services.*;
 
+import java.util.Vector;
+
 public class DiscountController {
 
     Services internetService = new InternetService();
@@ -27,10 +29,12 @@ public class DiscountController {
         remSpecDiscount.removeDiscount();
     }
 
-    public void returnDiscounts() {
-        System.out.println("Discount Applied on Internet Payment Services: " + internetService.getDiscount() * 100 + "%" );
-        System.out.println("Discount Applied on Mobile Recharge Services: " + mobileRecharge.getDiscount()*100 + "%");
-        System.out.println("Discount Applied on Donations Services: " + donations.getDiscount()*100 + "%");
-        System.out.println("Discount Applied on Landline Services: " + landline.getDiscount()*100 + "%");
+    public Vector<Double> returnDiscounts() {
+        Vector<Double> discounts = new Vector<Double>();
+        discounts.add(internetService.getDiscount() * 100);
+        discounts.add(mobileRecharge.getDiscount()*100);
+        discounts.add(donations.getDiscount()*100 * 100);
+        discounts.add(landline.getDiscount()*100);
+        return discounts;
     }
 }

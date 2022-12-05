@@ -9,6 +9,8 @@ import system.users.Customer;
 import system.users.CustomerController;
 import system.users.SignInBoundry;
 import java.util.Scanner;
+import java.util.Vector;
+
 import system.payment.*;
 import system.transaction.*;
 
@@ -88,8 +90,12 @@ public class CustomerMenu {
                 System.out.println(customerController.Search(service));
             }
             case 2 -> {
-                dis.returnDiscounts();
-            }
+                Vector <Double> showDiscounts = new Vector<Double>();
+                showDiscounts = discountController.returnDiscounts();
+                System.out.println("Discount Applied on Internet Payment Services: " + showDiscounts.get(0) + "%" );
+                System.out.println("Discount Applied on Mobile Recharge Services: " + showDiscounts.get(1) + "%");
+                System.out.println("Discount Applied on Donations Services: " + showDiscounts.get(2) + "%");
+                System.out.println("Discount Applied on Landline Services: " + showDiscounts.get(3) + "%");            }
             case 3 -> {
                 System.out.println("Please enter credit card number and the amount you'd like to add to your wallet");
                 creditcard = sc.next();
