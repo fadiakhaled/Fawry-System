@@ -59,7 +59,7 @@ public class CustomerMenu {
                     System.out.println("Discount Applied on Landline Services: " + showDiscounts.get(3) + "%");
                 }
                 case 3 -> {
-                    System.out.println("Please enter credit card number ");
+                    System.out.println("Please enter credit card number [12 number]");
                     creditcard = sc.next();
                     System.out.println("Please enter the amount you'd like to add to your wallet");
                     amount = sc.nextDouble();
