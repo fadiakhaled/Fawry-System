@@ -33,7 +33,7 @@ public class DiscountController {
         Vector<Double> discounts = new Vector<Double>();
         discounts.add(internetService.getDiscount() * 100);
         discounts.add(mobileRecharge.getDiscount()*100);
-        discounts.add(donations.getDiscount()*100 * 100);
+        discounts.add(donations.getDiscount()* 100);
         discounts.add(landline.getDiscount()*100);
         return discounts;
     }
