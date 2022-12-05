@@ -37,7 +37,12 @@ public class DonationServiceProvider extends ServiceProvider {
         setPay_amount(getPay_amount()-(getService().getDiscount() * getPay_amount()));
         if (getPayment().pay(getPay_amount()) > -2) {
             transactions.addTransaction(getTrans());
-            System.out.println("Transaction completed successfully and amount " + getPay_amount() + " was paid.");
+            System.out.println("Transaction completed successfully ");
+            System.out.println("Transaction ID: "+trans.getTrans_ID());
+            System.out.println("For service: "+trans.getService_name());
+            if(!trans.getProvider().equals(""))
+                System.out.println("The service provider: "+trans.getProvider());
+            System.out.println("The amount paid: "+ trans.getPay_amount());
         } else if (getPayment().pay(getPay_amount()) > -1) {
             getCustomer().setWallet(getPayment().pay(getPay_amount()));
         } else if (getPayment().pay(getPay_amount()) == -2) {

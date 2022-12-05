@@ -20,4 +20,14 @@ public class InternetService extends Services {
     public void setMobile_num(String mobile_num) {
         this.mobile_num = mobile_num;
     }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name=name;
+    }
 }
