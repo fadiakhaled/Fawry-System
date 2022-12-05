@@ -44,7 +44,9 @@ public class AdminMenu {
                             case 2 -> removeSpecificDiscount();
                         }
                     }
+                    // accept or reject refunds
                     case 4 -> {
+                        //printing all refunds
                         getRefunds();
                         System.out.println("[1]Search by Transaction ID\n[2]Exit");
                         int ch2 = sc.nextInt();
@@ -56,9 +58,11 @@ public class AdminMenu {
                                 int acceptance = sc.nextInt();
                                 switch (acceptance) {
                                     case 1 -> {
+                                        // accept refund request
                                         acceptRefund(id);
                                     }
                                     case 2 -> {
+                                        // reject refund request
                                         refuseRefund(id);
                                     }
                                 }
@@ -75,7 +79,8 @@ public class AdminMenu {
 
         }
     }
-    
+
+    // getting and printing all refunds
     public void getRefunds() {
         HashMap<Integer, Transaction> refunds = refundC.getRefunds();
         for (Integer key: refunds.keySet()){
@@ -87,19 +92,22 @@ public class AdminMenu {
             System.out.println();
         }
     }
+    // accept refund request
     public void acceptRefund(int id) {
+        // if transaction id is found in refund list then accept the request else the entered ID id wrong
         if(refundC.acceptRequest(id))
             System.out.println("Refund Accepted.");
         else
             System.out.println("Wrong Transaction ID");
     }
+    // reject refund request
     public void refuseRefund(int id) {
-        if(refundC.requestRefund(id))
+        // if transaction id is found in refund list then reject the request else the entered ID id wrong
+        if(refundC.refuseRequest(id))
             System.out.println("Refund Accepted.");
         else
             System.out.println("Wrong Transaction ID");
     }
-
     void createOverallDiscount(double amount) {
         if (!discountController.createOverallDiscount(amount)) {
             System.out.println("You cannot apply this discount, some services may reach 100% discount");

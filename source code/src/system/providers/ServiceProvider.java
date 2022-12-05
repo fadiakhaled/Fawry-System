@@ -23,6 +23,7 @@ public abstract class ServiceProvider {
         choose_form();
         create_Trans();
         pay_transaction();
+        transactions.addTransaction(trans);
 
     }
 
