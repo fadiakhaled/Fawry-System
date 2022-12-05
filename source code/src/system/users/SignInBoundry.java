@@ -1,11 +1,18 @@
 package system.users;
 
+import system.menus.AdminMenu;
+import system.menus.CustomerMenu;
+
 import java.util.Scanner;
 
 public class SignInBoundry {
     static Customer currentCustomer = new Customer("habibayasser", "habibayasser@gmail.com", "123");
     Scanner sc = new Scanner(System.in);
     static Admin currentAdmin = new Admin("maimostafa", "maimostafa@gmail.com", "321");
+    CustomerMenu m = new CustomerMenu();
+    AdminMenu adminMenu = new AdminMenu();
+    int x;
+    int ch;
 
     private String Email;
     private String Password;
@@ -43,7 +50,7 @@ public class SignInBoundry {
         return Password;
     }
 
-    void setUserl(String e) {
+    void setUsername(String e) {
         user = e;
     }
 
@@ -72,7 +79,13 @@ public class SignInBoundry {
         return controller.getCurrentAdmin(Email);
     }
 
-    public int Show(int x) { //show signInboundry for the user or admin to choose if he is admin or user or want to sign up
+    public void Show() {
+        //show signInboundry for the user or admin to choose if he is admin or user or want to sign up
+        System.out.println("[1]: Admin");
+        System.out.println("[2]: User");
+        System.out.println("[3]: Exit");
+        System.out.print("Enter your choice: ");
+        x = sc.nextInt();
         if(x==1) {
             System.out.print("Please Enter your email: ");
             Email = sc.next().toLowerCase();
@@ -92,8 +105,12 @@ public class SignInBoundry {
                     currentAdmin = s.getAdmin(Email);
                 }
             }
-            z=1;
-        }else if(x==2){
+            adminMenu.ShowAdminMenu();
+            Show();
+
+        }
+
+        else if(x==2){
             int y;
             System.out.println("1 :Sign in");
             System.out.println("2: Sign up");
@@ -120,7 +137,7 @@ public class SignInBoundry {
                     }
                 }
 
-            }
+                m.ShowUserMenu();}
             else if (y == 2)//sign up user
             {
                 System.out.print("Please Enter user name: ");
@@ -133,13 +150,28 @@ public class SignInBoundry {
                 SignInBoundry s = new SignInBoundry(user, Email, Password);
                 System.out.println(s.SignUp());
                 currentCustomer = s.getCustomer(Email);
+                m.ShowUserMenu();
+                Show();
 
             }
-            z=2;
+
         }
 
-        return z;
+        while(x!=3) {
+            while (x != 1 && x != 2) {
+                System.out.print("Wrong Choice, Enter again: ");
+                x = sc.nextInt();
+            }
+
+            if (x == 1) {
+                Show();
+            } else if (x == 2) {
+                Show();
+            }
+
         }
+
+    }
 
 
     }

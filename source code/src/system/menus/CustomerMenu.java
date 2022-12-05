@@ -64,9 +64,7 @@ public class CustomerMenu {
                     amount = sc.nextDouble();
                     System.out.println("Your wallet now contains " + customerController.AddToWallet(currentCustomer, creditcard, amount));
                 }
-                // ask for refund
                 case 4 -> {
-                    // get transaction id and request refund for the specified transaction
                     System.out.println("Please Enter Transaction id");
                     int id = sc.nextInt();
                     requestRefund(id);
@@ -138,20 +136,16 @@ public class CustomerMenu {
 
         }
     }
-    // request refund function
     public void requestRefund(int id)
     {
-        // if current customer username is the same as the username saved in the transaction
         if(currentCustomer.getCustomerName()==refundC.getTransactionByID(id).getCustomer().getCustomerName())
         {
-            // request refund for the specified transaction id
             if(refundC.requestRefund(id))
                 System.out.println("Refund request done successfully.");
-                // transaction ID not found
             else
                 System.out.println("Wrong Transaction ID.");
         }
-        // customer entered transaction ID of a transaction of another customer
+
         else
             System.out.println("No such Transaction for the current user.");
 
